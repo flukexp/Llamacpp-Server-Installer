@@ -36,18 +36,22 @@ This shell script automates the installation, setup, and running of the LlamaCpp
 1. **Clone the Repository**: 
    Ensure you have the script saved in the desired directory.
 
-2. **Run the Script**:
+2. **Allowed permission**
    ```bash
-   ./install_and_run_llamacpp.sh
+   chmod +x ./llamacpp.sh
+   ```
+4. **Run the Script**:
+   ```bash
+   ./llamacpp.sh
    ```
 
-3. **Script Execution**:
+5. **Script Execution**:
    - The script will first check if `llama-server` is already installed.
    - If not, it will clone the `llama.cpp` repository and build the server.
    - Then, it checks if the OpenChat 3.5-GGUF model is already downloaded. If not, it will download the model.
    - Finally, it starts the `llama-server` using the downloaded model.
 
-4. **Access the Server**:
+6. **Access the Server**:
    The server will be accessible at `http://localhost:8080/`.
 
 ## Notes
