@@ -18,8 +18,8 @@ is_llama_installed() {
 }
 
 # Function to check if model is already downloaded
-is_model_dowloaded(){
-    if [ -x "./llama.cpp/models/openchat_3.5.Q5_K_M.gguf" ]; then
+is_model_downloaded(){
+    if [ -f "./models/openchat_3.5.Q4_K_M.gguf" ]; then
         return 0
     else
         return 1
@@ -44,18 +44,18 @@ else
 fi
 
 # Download openchat model only if not downloaded yet
-if is_model_dowloaded; then 
+if is_model_downloaded; then 
     echo "openchat_3.5-GGUF models already downloaded"
 else
     # Install open-ai
     echo "Installing openchat_3.5-GGUF..."
-    curl -L -o models/openchat_3.5.Q5_K_M.gguf https://huggingface.co/TheBloke/openchat_3.5-GGUF/resolve/main/openchat_3.5.Q5_K_M.gguf
+    curl -L -o models/openchat_3.5.Q4_K_M.gguf https://huggingface.co/TheBloke/openchat_3.5-GGUF/resolve/main/openchat_3.5.Q4_K_M.gguf
     check_error "Failed to install openchat_3.5-GGUF"
 fi
 
 # Start llama.cpp server
 echo "Starting llama.cpp server..."
-./llama-server -m models/openchat_3.5.Q5_K_M.gguf --port 8080
+./llama-server -m models/openchat_3.5.Q4_K_M.gguf --port 8080
 check_error "Failed to start llama.cpp server"
 
 echo "llamacpp server is starting..."
